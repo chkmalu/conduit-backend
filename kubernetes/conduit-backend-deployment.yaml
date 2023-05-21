@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: conduit-dev
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: conduit-dev
+  name: conduit-backend-deployment
+  labels:
+    app: conduit-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: conduit-backend
+  template:
+    metadata:
+      labels:
+        app: conduit-backend
+    spec:
+      containers:
+      - name: conduit-backend
+        image: chikamalu/conduit-backend:latest
+        ports:
+        - containerPort: 4000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: conduit-dev
+  name: conduit-backend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: conduit-backend
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000

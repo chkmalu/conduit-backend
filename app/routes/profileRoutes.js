@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const profileController = require('../controllers/profilesController');
-const verifyJWT = require('../middleware/verifyJWT');
-const verifyJWTOptional = require('../middleware/verifyJWTOptional');
+const profileController = require('../../../controllers/profilesController');
+const verifyJWT = require('../../middleware/verifyJWT');
+const verifyJWTOptional = require('../../middleware/verifyJWTOptional');
 
 // Get profile - authentication optional
 router.get('/:username',verifyJWTOptional, profileController.getProfile);

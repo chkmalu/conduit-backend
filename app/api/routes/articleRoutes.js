@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const verifyJWT = require('../middleware/verifyJWT');
-const verifyJWTOptional = require('../middleware/verifyJWTOptional');
+const verifyJWT = require('../../middleware/verifyJWT');
+const verifyJWTOptional = require('../../middleware/verifyJWTOptional');
 const articleController = require('../controllers/articlesController');
 
 // feed endpoint must go before :slug endpoint
